@@ -303,6 +303,7 @@ impl Family {
     }
 }
 
+#[derive(Debug)]
 pub struct OpenMessage {
     pub version: u8,
     pub as_number: u16,
@@ -409,6 +410,7 @@ impl OpenMessage {
     }
 }
 
+#[derive(Debug)]
 pub struct NotificationMessage {
     pub code: u8,
     pub sub_code: u8,
@@ -432,6 +434,7 @@ impl NotificationMessage {
     }
 }
 
+#[derive(Debug)]
 pub struct RouteRefreshMessage {
     pub family: Family,
     pub demarcation: u8,
@@ -454,6 +457,7 @@ pub struct ParseParam {
     pub local_as: u32,
 }
 
+#[derive(Debug)]
 pub enum Message {
     Open(OpenMessage),
     Update(UpdateMessage),
@@ -593,7 +597,7 @@ pub enum State {
     Established,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Segment {
     pub segment_type: u8,
     pub number: Vec<u32>,
@@ -621,7 +625,7 @@ impl Segment {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum Attribute {
     Origin {
         origin: u8,
@@ -1192,6 +1196,7 @@ fn path_attribute_as_path() {
     }
 }
 
+#[derive(Debug)]
 pub struct UpdateMessage {
     pub attrs: Vec<Attribute>,
     pub routes: Vec<Nlri>,
